@@ -129,7 +129,7 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
   }
 
   logging_config {
-    bucket          = "${aws_s3_bucket.site_logging_bucket.id}"
+    bucket          = "${aws_s3_bucket.site_logging_bucket.bucket_domain_name}"
   }
 
   restrictions {
