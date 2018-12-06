@@ -65,6 +65,7 @@ resource "aws_s3_bucket_policy" "site_logs_bucket_policy" {
 resource "aws_s3_bucket" "site_files_bucket" {
   bucket        = "${var.site_name}"
   force_destroy = "true"
+  tags = "${var.tags}"
 }
 
 resource "aws_s3_bucket" "site_logging_bucket" {
@@ -89,6 +90,8 @@ resource "aws_s3_bucket" "site_logging_bucket" {
       days = 90
     }
   }
+
+  tags = "${var.tags}"
 }
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {}
@@ -142,4 +145,6 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
     acm_certificate_arn = "${var.acm_certificate_arn}"
     ssl_support_method  = "sni-only"
   }
+
+  tags = "${var.tags}"
 }

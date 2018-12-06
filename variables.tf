@@ -5,3 +5,7 @@ variable "site_name" {
 variable "acm_certificate_arn" {
   description = "ARN for the Amazon Certificate Manager Certificate matching the site"
 }
+
+variable "tags" {
+  default = {}
+}
